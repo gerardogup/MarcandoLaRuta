@@ -18,7 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var posicionInicial: CLLocation? = nil
     var puntoActual: CLLocation? = nil
     var desfase: Bool = false
-    var contadorDePuntos:Double = 0
+    var ultimoPunto: CLLocation? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +63,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let distanciaTotal = ubicacionActual.distanceFromLocation(posicionInicial!)
             print(distanciaTotal)
             
-            let distanciaProximoPunto:Double = 50 * contadorDePuntos
-            if distanciaTotal > distanciaProximoPunto {
+            let distanciaUltimoPunto = ubicacionActual.distanceFromLocation(ultimoPunto!)
+            if distanciaUltimoPunto > 50 {
                 crearPin(ubicacionActual, distancia: distanciaTotal)
             }
         }
@@ -81,7 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         pin.subtitle = "Distancia Recorrida: \(distanciaStr) mts."
         pin.coordinate = punto
         mapa.addAnnotation(pin)
-        contadorDePuntos += 1
+        ultimoPunto = posicion
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
