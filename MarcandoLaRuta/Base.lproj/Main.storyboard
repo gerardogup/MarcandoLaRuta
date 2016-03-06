@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MarcandoLaRuta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,52 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-gV-BHY">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="kve-5D-t3C">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80522629310344829" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="V7A-PC-PXZ"/>
+                                    <barButtonItem title="Standard" id="Que-D9-vp4">
+                                        <connections>
+                                            <action selector="mostrarMapaStandard:" destination="BYZ-38-t0r" id="IhC-yh-NSZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Satellite" id="GC6-q7-10Z">
+                                        <connections>
+                                            <action selector="mostrarMapaSatellite:" destination="BYZ-38-t0r" id="uVz-E2-mOS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Hybrid" id="zRl-hm-FNM">
+                                        <connections>
+                                            <action selector="mostrarMapaHybrid:" destination="BYZ-38-t0r" id="PZq-rP-Ugh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="S8b-FM-VRM"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kve-5D-t3C" firstAttribute="trailing" secondItem="bPS-gV-BHY" secondAttribute="trailing" id="EHI-YY-d62"/>
+                            <constraint firstItem="kve-5D-t3C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ihz-l5-X8H"/>
+                            <constraint firstItem="kve-5D-t3C" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="JVn-D8-mhd"/>
+                            <constraint firstItem="bPS-gV-BHY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kaa-0Q-ZbK"/>
+                            <constraint firstItem="bPS-gV-BHY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PPp-EP-vLW"/>
+                            <constraint firstItem="kve-5D-t3C" firstAttribute="leading" secondItem="bPS-gV-BHY" secondAttribute="leading" id="dui-pk-EYh"/>
+                            <constraint firstItem="kve-5D-t3C" firstAttribute="top" secondItem="bPS-gV-BHY" secondAttribute="bottom" id="swb-Ou-yqz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapa" destination="bPS-gV-BHY" id="GOo-6X-CfG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="879" y="507"/>
         </scene>
     </scenes>
 </document>
